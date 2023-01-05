@@ -39,3 +39,17 @@
     transform: rotate(360deg);
   }
 }
+
+.red {
+  color: red;
+}
+
+.component {
+  margin: 50px auto 50px auto;
+  padding: 50px 0;
+  width: 60%;
+}
+
+.highlight {
+  background-color: #e0bed0;
+}

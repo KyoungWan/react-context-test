@@ -6,18 +6,27 @@ const ChildComponent = (props: any) => {
   counter.current += 1;
 
   return (
-    <div
-      style={{
-        display: "block",
-        background: "gray",
-      }}
-    >
-      <h4>
-        I am child component I dont want to be re-rendered when context changed
-      </h4>
-      <h4>I rerendered: {counter.current} times</h4>
+    <>
+      <div
+        className="component"
+        style={{
+          display: "block",
+          background: "gray",
+        }}
+      >
+        <h2>Child component</h2>
+        <h4>
+          I <span className="red">dont </span> want to be re-rendered when
+          context(a, b) changed
+        </h4>
+        <h4>
+          I <span className="red">dont </span> want to be re-rendered when c
+          changed
+        </h4>
+        <h4>I rerendered: {counter.current} times</h4>
+      </div>
       <GrandChildComponent />
-    </div>
+    </>
   );
 };
 export default ChildComponent;

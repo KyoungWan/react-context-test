@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import MyContext from "./context/MyContext";
 
 const ParentComponent = (props: any) => {
@@ -9,38 +9,54 @@ const ParentComponent = (props: any) => {
   const contextValue = useMemo(() => {
     return { a, b };
   }, [a, b]);
+
+  const counter = useRef(0);
+
+  counter.current += 1;
   return (
     <MyContext.Provider value={contextValue}>
       <div
-        className="parent"
+        className="parent component"
         style={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          margin: "30px",
+          margin: "auto",
+          background: "#f1f1f1",
         }}
       >
-        <button>
-          <span onClick={() => setA((a) => a + 1)}>Increment A</span>
-        </button>
-        <button>
-          <span onClick={() => setB((b) => b + 1)}>Increment B</span>
-        </button>
-        <button>
-          <span onClick={() => setC((c) => c + 1)}>Increment C</span>
-        </button>
-        {/* // refresh button */}
-        <button
-          onClick={() => {
-            setA(0);
-            setB(0);
-          }}
-        >
-          refresh
-        </button>
+        <div>
+          <button>
+            <span onClick={() => setA((a) => a + 1)}>Increment A</span>
+          </button>
+          <button>
+            <span onClick={() => setB((b) => b + 1)}>Increment B</span>
+          </button>
+          <button>
+            <span onClick={() => setC((c) => c + 1)}>Increment C</span>
+          </button>
+          <button
+            onClick={() => {
+              setA(0);
+              setB(0);
+            }}
+          >
+            reset
+          </button>
+        </div>
+        <h2>Parent component</h2>
+        <h4>
+          I <span className="red">dont</span> want to be re-rendered when
+          context(a, b) changed
+        </h4>
+        <h4>
+          I <span className="red">dont </span> want to be re-rendered when c
+          changed
+        </h4>
+        <h4>I rerendered: {counter.current} times</h4>
+        <h4 className="highlight"> State variable c: {c}</h4>
       </div>
-      <div> c {c}</div>
       {props.children}
     </MyContext.Provider>
   );
