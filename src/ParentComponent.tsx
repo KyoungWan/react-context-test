@@ -6,7 +6,9 @@ const ParentComponent = (props: any) => {
   const [b, setB] = useState(0);
   const [c, setC] = useState(0);
 
-  const contextValue = { a, b };
+  const contextValue = useMemo(() => {
+    return { a, b };
+  }, [a, b]);
   return (
     <MyContext.Provider value={contextValue}>
       <div
