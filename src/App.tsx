@@ -1,11 +1,14 @@
 import "./App.css";
+import ChildComponent from "./ChildComponent";
 import ParentComponent from "./ParentComponent";
 
 function App() {
   return (
     <div className="App">
       App Component
-      <ParentComponent />
+      <ParentComponent>
+        <ChildComponent />
+      </ParentComponent>
     </div>
   );
 }

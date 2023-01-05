@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import MyContext from "./context/MyContext";
-import ChildComponent from "./ChildComponent";
-
-const MemoizedChildComponent = React.memo(ChildComponent);
 
 const ParentComponent = (props: any) => {
   const [a, setA] = useState(0);
@@ -37,7 +34,7 @@ const ParentComponent = (props: any) => {
           refresh
         </button>
       </div>
-      <MemoizedChildComponent />
+      {props.children}
     </MyContext.Provider>
   );
 };
