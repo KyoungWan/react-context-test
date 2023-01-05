@@ -1,4 +1,6 @@
 import React from "react";
 
-const MyContext = React.createContext({ a: 1, b: 2 });
+const initialState = { a: 1, b: 2 };
+
+const MyContext = React.createContext(initialState);
 export default MyContext;
