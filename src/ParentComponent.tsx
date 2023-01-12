@@ -46,10 +46,7 @@ const ParentComponent = (props: any) => {
           </button>
         </div>
         <h2>Parent component</h2>
-        <h4>
-          I <span className="red">dont</span> want to be re-rendered when
-          context(a, b) changed
-        </h4>
+        <h4>I want to be re-rendered when context(a, b) changed</h4>
         <h4>
           I <span className="red">dont </span> want to be re-rendered when c
           changed
